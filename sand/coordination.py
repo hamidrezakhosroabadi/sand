@@ -1,7 +1,5 @@
 from kazoo.client import KazooClient
-
-
-DEFAULT_PATH = '/'
+from constants import DEFAULT_PATH
 
 
 class Coordinator():
