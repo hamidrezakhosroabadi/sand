@@ -14,6 +14,8 @@ class Ring:
         self.__nodes.remove(node)
 
     def get(self, obj, replicas=1):
+        if replicas > len(self.__nodes):
+            raise Exception()
         bisect_index = self.__nodes.bisect(obj)
         return [self.__nodes[(bisect_index+i) % len(self.__nodes)]
                 for i in range(replicas)]
