@@ -1,4 +1,3 @@
-from requests import get, post, delete
 from hashlib import md5
 from functools import total_ordering
 from sys import byteorder
@@ -6,9 +5,19 @@ from sys import byteorder
 
 @total_ordering
 class Node:
-    def __init__(self, name, address):
+    def __init__(self, name, address, client):
         self.__name = name
         self.__address = address
+        self.__client = client
+
+    def is_lock(self, key):
+        return self.__client.is_lock(self.__address, key)
+
+    def lock(self, key):
+        return self.__client.lock(self.__address, key)
+
+    def unlock(self, key):
+        return self.__client.unlock(self.__address, key)
 
     def __hash__(self):
         return int.from_bytes(md5(f'{self.__name}{self.__address}'.encode()).digest(), byteorder)

@@ -6,7 +6,7 @@ from node import Node
 app = Flask(__name__)
 
 lock_table = LockTable()
-ring = Ring([Node('me', 'http://localhost:5000')])
+ring = Ring([Node('me', 'http://localhost:5000/')])
 
 
 @app.get('/lock/<key>')
