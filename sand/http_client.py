@@ -2,11 +2,11 @@ from requests import get, post, delete
 
 
 class HTTPClient:
-    def is_lock(self, address, key):
-        return True if get(f'{address}{key}').status_code == 200 else False
+    def read(self, address, key):
+        return get(f'{address}/keys/{key}').text
 
-    def lock(self, address, key):
-        post(f'{address}{key}')
+    def set(self, address, key, value):
+        post(f'{address}/keys/{key}', json={'value': value})
 
-    def unlock(self, address, key):
-        delete(f'{address}{key}')
+    def unset(self, address, key):
+        delete(f'{address}/keys/{key}')
