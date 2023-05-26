@@ -17,10 +17,10 @@ class Coordinator():
         self.__connection.stop()
 
     def exists(self, hostname):
-        return self.__connection.exists(DEFAULT_PATH+hostname)
+        return self.__connection.exists(DEFAULT_PATH + hostname)
 
     def get_members(self):
         return self.__connection.get_children(DEFAULT_PATH)
 
     def __repr__(self):
-        return f'{type(self.__name__)}({self.__zookeeper_host!r},{self.last_name!r})'
+        return f'{type(self.__name__)}({self.__zookeeper_host!r},{self.__hostname!r})'
