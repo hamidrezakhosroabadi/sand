@@ -10,14 +10,14 @@ class Node:
         self.__address = address
         self.__client = client
 
-    def is_lock(self, key):
-        return self.__client.is_lock(self.__address, key)
+    def read(self, key):
+        return self.__client.read(self.__address, key)
 
-    def lock(self, key):
-        return self.__client.lock(self.__address, key)
+    def set(self, key, value):
+        return self.__client.set(self.__address, key, value)
 
-    def unlock(self, key):
-        return self.__client.unlock(self.__address, key)
+    def unset(self, key):
+        return self.__client.unset(self.__address, key)
 
     def __hash__(self):
         return int.from_bytes(md5(f'{self.__name}{self.__address}'.encode()).digest(), byteorder)

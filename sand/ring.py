@@ -20,6 +20,9 @@ class Ring:
         return [self.__nodes[(bisect_index+i) % len(self.__nodes)]
                 for i in range(replicas)]
 
+    def get_all(self):
+        return list(self.__nodes)
+
     def __len__(self):
         return len(self.__nodes)
 
